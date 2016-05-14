@@ -52,7 +52,7 @@ korklar.run('h1, p, .box', 'click', 1000, function(){
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
     <script src="https://cdn.rawgit.com/tommiehansen/base/master/js/korklar/korklar.js"></script>
-    <script src="">
+    <script>
 
     /* -----------------------------------
 
@@ -79,33 +79,11 @@ korklar.run('h1, p, .box', 'click', 1000, function(){
     $('#boxColors').append(html);
 
 
-
     /* -----------------------------------
 
-     ADD SOME CONTENTS
+        SOME BINDS
 
     ----------------------------------- */
-
-    // render some color boxes
-    var colors = {
-      'red': '#EF5350',  'pink': '#f06292',  'purple': '#BA68C8', 'deep purple': '#9575CD', 'indigo': '#5C6BC0', 'blue': '#42A5F5', 'light blue': '#4FC3F7',
-      'cyan': '#4DD0E1', 'teal': '#80CBC4', 'green': '#81C784', 'light green': '#9ccc65', 'lime': '#DCE775', 'yellow': '#FFEE58', 'amber': '#FFD54F', 'orange': '#FFB74D', 'deep orange': '#FF8A65',
-    };
-
-    var template =  '<div class="color"><span style="background:@value"></span><i><u>@title</u><b>@color</b></i></div>';
-    var key, html = '';
-
-    for (key in colors) {
-      html += template
-              .replace('@value', colors[key])
-              .replace('@color', colors[key])
-              .replace('@title', key);
-    }
-
-    $('#boxColors').append(html);
-
-
-    // DO SOME binds
 
     $('#run2,#run3').on('click', function(){
       this.style.backgroundColor = '#9CCC65';
@@ -148,5 +126,4 @@ korklar.run('h1, p, .box', 'click', 1000, function(){
     </script>
 
 </body>
-
 </html>
