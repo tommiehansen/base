@@ -5,9 +5,13 @@ Körklar (swedish for 'Runnable') is a simple function that takes a bounch of se
 **Demo**  
 https://rawgit.com/tommiehansen/base/master/js/korklar/demo.html
 
+-
+
 #### Howto  
 1. include korklar.js or korklar.min.js
 2. run the function on some element that does something
+
+-
 
 #### Example
 ```
@@ -21,6 +25,8 @@ korklar.run('#myForm input:eq(0), #myForm input:eq(1)', 'focus', 1000, function(
   alert('finished focusing first and second input in #myForm');
 })
 ```
+
+-
 
 #### Params
 The function takes these params  
