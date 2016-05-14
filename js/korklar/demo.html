@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Körklar demo runner</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+
+    <div id="colors"><b>■</b><b>■</b><b>■</b></div>
+    <div id="boxes" class="container">
+
+        <h1><b>Körklar</b> demo runner</h1>
+        <p class="intro"><b style="color:red">IN PROGRESS</b> Körklar <em>(swedish for 'Runnable')</em> is a simple function that takes a bounch of selectors and triggers events on them with a set delay between each iteration. It also adds a marker to each element before
+            triggering. The usecase is showing someone something or a flow of something like an animation sequence or different states.</p>
+
+        <p>Try it, click the buttons below</p>
+
+        <button class="btn-primary btn" id="run2">element</button>
+        <button class="btn-secondary btn" id="run3">multi-element</button>
+
+        <div id="boxColors"></div>
+
+    </div>
+    <!-- /#boxes -->
+
+
+    <div class="container">
+
+        <h3>Use</h3>
+        <p><b>Examples</b></p>
+        <p>1. click all .box each 2s, alert 'finished' when done</p>
+<pre>
+korklar.run('.box', 'click', 2000, function(){
+  alert('finished');
+})
+</pre>
+
+        <p>2. click all h1, p, .box each 1s, removeClass 'animation' when done</p>
+<pre>
+korklar.run('h1, p, .box', 'click', 1000, function(){
+  $('h1, p, .box').removeClass('animation');
+})
+</pre>
+
+    </div>
+    <!-- /.container -->
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
+    <script src=''></script>
+    <script src="">
+
+    /* -----------------------------------
+
+     ADD SOME CONTENTS
+
+    ----------------------------------- */
+
+    // render some color boxes
+    var colors = {
+      'red': '#EF5350',  'pink': '#f06292',  'purple': '#BA68C8', 'deep purple': '#9575CD', 'indigo': '#5C6BC0', 'blue': '#42A5F5', 'light blue': '#4FC3F7',
+      'cyan': '#4DD0E1', 'teal': '#80CBC4', 'green': '#81C784', 'light green': '#9ccc65', 'lime': '#DCE775', 'yellow': '#FFEE58', 'amber': '#FFD54F', 'orange': '#FFB74D', 'deep orange': '#FF8A65',
+    };
+
+    var template =  '<div class="color"><span style="background:@value"></span><i><u>@title</u><b>@color</b></i></div>';
+    var key, html = '';
+
+    for (key in colors) {
+      html += template
+              .replace('@value', colors[key])
+              .replace('@color', colors[key])
+              .replace('@title', key);
+    }
+
+    $('#boxColors').append(html);
+
+
+
+    /* -----------------------------------
+
+     ADD SOME CONTENTS
+
+    ----------------------------------- */
+
+    // render some color boxes
+    var colors = {
+      'red': '#EF5350',  'pink': '#f06292',  'purple': '#BA68C8', 'deep purple': '#9575CD', 'indigo': '#5C6BC0', 'blue': '#42A5F5', 'light blue': '#4FC3F7',
+      'cyan': '#4DD0E1', 'teal': '#80CBC4', 'green': '#81C784', 'light green': '#9ccc65', 'lime': '#DCE775', 'yellow': '#FFEE58', 'amber': '#FFD54F', 'orange': '#FFB74D', 'deep orange': '#FF8A65',
+    };
+
+    var template =  '<div class="color"><span style="background:@value"></span><i><u>@title</u><b>@color</b></i></div>';
+    var key, html = '';
+
+    for (key in colors) {
+      html += template
+              .replace('@value', colors[key])
+              .replace('@color', colors[key])
+              .replace('@title', key);
+    }
+
+    $('#boxColors').append(html);
+
+
+    // DO SOME binds
+
+    $('#run2,#run3').on('click', function(){
+      this.style.backgroundColor = '#9CCC65';
+      this.style.borderColor = '#9CCC65';
+    })
+
+    $('#run2').on('click', function(){
+      var t = this;
+
+      korklar.run('.color','click', 500, function(){
+        $('.color').find('s').remove();
+        $('.color').removeClass('animate');
+        t.style = '';
+      });
+
+    });
+
+    $('#run3').on('click', function(){
+      var t = this;
+      korklar.run('h1,.intro,.color:eq(1),.color:eq(3)', 'click', 1000, function(){
+        t.style = '';
+        var c = $('.color');
+        c.find('s').remove();
+        c.removeClass('animate');
+        $('h1,.intro').removeClass('animate');
+      });
+    });
+
+    // regular binds
+    $('h1,.intro').click(function(){
+      $(this).addClass('animate');
+    })
+
+    // do stuff on events
+    $('.color').on('click', function(){
+      var t = $(this);
+      t.addClass('animate');
+      t.find('span').append('<s>click</s>');
+    });
+    </script>
+
+</body>
+
+</html>
