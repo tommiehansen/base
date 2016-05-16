@@ -134,11 +134,11 @@
                 str = "\
                 .animation {\
                 	animation: in .5s forwards cubic-bezier(0.175, 0.885, 0.320, 1.275); opacity: 0;\
-                	animation-duration: 1s;\
+                	animation-duration: .7s;\
                 }\
                 \
                 @keyframes in {\
-                	from { transform: translateX(-200px) rotateZ(35deg); opacity:0; }\
+                	from { transform: translateY(200px) rotateZ(35deg) skewY(-30deg) skewX(70deg); opacity:0; }\
                 	to { transform: none; opacity: 1; }\
                 }\
                 ";
@@ -146,12 +146,12 @@
             else {
                 str = "\
                 .animation {\
-                	animation: in .5s forwards cubic-bezier(0.175, 0.885, 0.320, 1.275); opacity: 0;\
-                	animation-duration: .7s;\
+					animation: in .5s forwards cubic-bezier(0.175, 0.885, 0.320, 1.275); opacity: 0;\
+					animation-duration: .7s;\
                 }\
                 \
                 @keyframes in {\
-                	from { transform: translateY(60px) rotateY(180deg) rotateX(180deg); opacity:0; }\
+                	from { transform: translateY(60px) rotateY(180deg) rotateX(180deg) skewY(-20deg) skewX(20deg); opacity:0; }\
                 	to { transform: none; opacity: 1; }\
                 }\
                 ";
