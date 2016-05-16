@@ -1,0 +1,69 @@
+@import 'base.less';
+
+// Animation
+@ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+@ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+
+.animation {
+	animation: in .5s forwards @ease-out-quart; opacity: 0;
+	animation-duration: 0.5s;
+}
+
+@keyframes in {
+	from { transform: translateY(200px) rotateZ(15deg); opacity:0; }
+	to { transform: none; opacity: 1; }
+}
+
+
+ @media(max-width: 906px){
+	#btns p, #f p { display:block; width: 100%; }
+ }
+ @media(max-width: 470px){
+	#f input[type=submit]{ margin-left:0; margin-right:40px; }
+ }
+
+
+body button.ani {
+	padding: 0 15px;
+	&.on { background: @indigo-400; border-color: @indigo-400; color: #fff; }
+}
+
+
+
+[title]{
+	position:relative;
+}
+[title]:after{
+	text-transform: none;
+	content:attr(title);
+	color: #666;
+	background: #fff;
+	padding: 0 @padding-half;
+	border:1px solid #ddd;
+	border-radius:3px;
+	position:absolute;
+	left:-9999px;
+	opacity:0;
+	margin:0 0 10px;
+	bottom:100%;
+	white-space:nowrap;
+	font-family: @font,arial;
+	font-weight: @font-normal;
+	font-size: 1.4rem;
+}
+[title]:hover:after{
+	left:0;
+	opacity:1;
+}
+
+#korklarMarker { margin:-6px 0 0 0px !important; }
+#demo {
+	&.green { .primary-button(@light-green-400); }
+	.primary-button(@indigo-400);
+	disply:inline-block;
+	padding:2px 5px;
+	border-radius:5px;
+	cursor: pointer;
+}
+
+a { text-decoration:none; font-weight: @font-normal; }

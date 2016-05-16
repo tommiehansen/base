@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Animation stagger</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+
+    <div id="colors"><b>■</b><b>■</b><b>■</b></div>
+    <div id="boxes" class="container">
+
+        <h1><b>Stagger</b> animations</h1>
+        <p class="intro">A light 190 bytes pure javascript helper to add stagger to css animations or transitions. Run an automated <span id="demo">demo</span>, mash the buttons below or enter custom stuff in the form.</p>
+
+        <div id="btns">
+            <p>Presets</p>
+            <button class="btn-primary stag demo" data-stagger="30">30ms</button>
+            <button class="btn-primary stag demo" data-stagger="60">60ms (default)</button>
+            <button class="btn-primary stag demo" data-stagger="120">120ms</button>
+            <button class="btn-primary stag demo" data-stagger="60|5">60ms + stop after 5th</button>
+            <button class="ani on demo" rel="1" title="set anim style 1">1</button>
+            <button class="ani demo" rel="2" title="set anim style 2">2</button>
+            <button class="ani demo" rel="3" title="set anim style 3">3</button>
+        </div>
+
+        <form action="" id="f">
+            <p>Set custom</p>
+            <input type="number" placeholder="Stagger"><input type="number" placeholder="Stop after"><input type="submit" class="btn-secondary" value="Enter">
+        </form>
+
+    </div>
+
+    <div class="container">
+
+        <div id="boxColors">
+            <div class="color"><span style="background:#EF5350"></span><i><u>red</u><b>#EF5350</b></i></div>
+            <div class="color"><span style="background:#f06292"></span><i><u>pink</u><b>#f06292</b></i></div>
+            <div class="color"><span style="background:#BA68C8"></span><i><u>purple</u><b>#BA68C8</b></i></div>
+            <div class="color"><span style="background:#9575CD"></span><i><u>deep purple</u><b>#9575CD</b></i></div>
+            <div class="color"><span style="background:#5C6BC0"></span><i><u>indigo</u><b>#5C6BC0</b></i></div>
+            <div class="color"><span style="background:#42A5F5"></span><i><u>blue</u><b>#42A5F5</b></i></div>
+            <div class="color"><span style="background:#4FC3F7"></span><i><u>light blue</u><b>#4FC3F7</b></i></div>
+            <div class="color"><span style="background:#4DD0E1"></span><i><u>cyan</u><b>#4DD0E1</b></i></div>
+            <div class="color"><span style="background:#80CBC4"></span><i><u>teal</u><b>#80CBC4</b></i></div>
+            <div class="color"><span style="background:#81C784"></span><i><u>green</u><b>#81C784</b></i></div>
+            <div class="color"><span style="background:#9ccc65"></span><i><u>light green</u><b>#9ccc65</b></i></div>
+            <div class="color"><span style="background:#DCE775"></span><i><u>lime</u><b>#DCE775</b></i></div>
+            <div class="color"><span style="background:#FFEE58"></span><i><u>yellow</u><b>#FFEE58</b></i></div>
+            <div class="color"><span style="background:#FFD54F"></span><i><u>amber</u><b>#FFD54F</b></i></div>
+            <div class="color"><span style="background:#FFB74D"></span><i><u>orange</u><b>#FFB74D</b></i></div>
+            <div class="color"><span style="background:#FF8A65"></span><i><u>deep orange</u><b>#FF8A65</b></i></div>
+            <div class="color"><span style="background: #4cf"></span><i><u>baby douche</u><b>#44ccff</b></i></div>
+            <div class="color"><span style="background: #d00"></span><i><u>stabwound</u><b>#dd0000</b></i></div>
+            <div class="color"><span style="background: hotpink"></span><i><u>Bimbo</u><b>hotpink</b></i></div>
+            <div class="color"><span style="background: #f70"></span><i><u>Fire</u><b>#ff7700</b></i></div>
+        </div>
+
+    </div>
+    <!-- /#boxes -->
+
+
+
+    <div class="container">
+
+        <h2>How</h2>
+        <p>Get <a href="#">Stagger Animations Github</a>, include animation.stagger.js or animation.stagger.min.js and do your stuff.</p>
+
+
+    </div>
+    <!-- /.container -->
+
+
+    <style id="keyframes"></style>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
+    <script src="https://cdn.rawgit.com/tommiehansen/base/master/js/korklar/korklar.js"></script>
+    <script src="animation.stagger.js"></script>
+    <script type="text/javascript">
+
+        var color = $('.color');
+
+        // run at pageload
+        stagger.init(".color"); // use default options
+        color.addClass('animation'); // add animation
+
+
+        // short func
+        function removeAdd(s){ s.removeClass('animation'); setTimeout(function(){ s.addClass('animation'); }, 16); }
+
+        // do some binds
+        $('#btns').on('click', '.stag', function(){
+
+            var delay = $(this).attr('data-stagger');
+
+            // check if there's a 'stopAfter' value and add it
+            if(delay.indexOf('|') > -1) {
+                delay = delay.split('|');
+                stagger.init('.color', delay[0], delay[1]);
+            }
+            else {
+                stagger.init('.color',delay);
+            }
+
+            //color.removeClass('animation'); setTimeout(function(){ color.addClass('animation'); }, 16);
+            removeAdd(color);
+
+        })
+
+        $('#btns').on('click', '.ani', function(){
+            var $t = $(this),
+                kf = $('#keyframes'),
+                str = '',
+                attr = $t.attr('rel');
+
+            $t.parent().find('.ani').removeClass('on');
+            $t.addClass('on');
+
+            // default
+            if(attr == '1'){
+                str = "\
+                .animation {\
+                	animation: in .5s forwards cubic-bezier(0.165, 0.840, 0.440, 1.000); opacity: 0;\
+                	animation-duration: 0.5s;\
+                }\
+                \
+                @keyframes in {\
+                	from { transform: translateY(200px) rotateZ(15deg); opacity:0; }\
+                	to { transform: none; opacity: 1; }\
+                }\
+                ";
+            }
+            else if(attr == '2'){
+                str = "\
+                .animation {\
+                	animation: in .5s forwards cubic-bezier(0.175, 0.885, 0.320, 1.275); opacity: 0;\
+                	animation-duration: 1s;\
+                }\
+                \
+                @keyframes in {\
+                	from { transform: translateX(-200px) rotateZ(35deg); opacity:0; }\
+                	to { transform: none; opacity: 1; }\
+                }\
+                ";
+            }
+            else {
+                str = "\
+                .animation {\
+                	animation: in .5s forwards cubic-bezier(0.175, 0.885, 0.320, 1.275); opacity: 0;\
+                	animation-duration: .7s;\
+                }\
+                \
+                @keyframes in {\
+                	from { transform: translateY(60px) rotateY(180deg) rotateX(180deg); opacity:0; }\
+                	to { transform: none; opacity: 1; }\
+                }\
+                ";
+            }
+
+            kf.html(str);
+            $('#btns').find('.stag').eq(1).trigger('click');
+
+        })
+
+
+        // the form
+        var f = $('#f'),
+            color;
+
+        f.on('submit', function(e){
+            e.preventDefault();
+
+            var inputs = f.find('input[type=number]'),
+                delay = inputs[0],
+                stop = inputs[1],
+                str = '';
+
+            //if( delay.value !== '' ) { delay = delay.value; } else { delay = null; }
+            //if( stop.value !== '' ) { stop = stop.value; } else { stop = null; }
+
+            delay.value !== '' ? delay = delay.value : delay = null;
+            stop.value !== '' ? stop = stop.value : stop = null;
+
+            stagger.init('.color', delay, stop);
+            removeAdd(color);
+
+        })
+
+
+        $('#demo').on('click', function(e){
+            e.preventDefault();
+            var $t = $(this);
+            $t.addClass('green');
+            korklar.run('.demo','click', 2500, function(){
+                $t.removeClass('green');
+            });
+        })
+
+
+    </script>
+
+</body>
+</html>
