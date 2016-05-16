@@ -21,7 +21,7 @@ var stagger = {
         for(var i=0;i<len;i++){
             if(stop && stop < i) { stagger = stag * stop; }
             else { stagger = stag * i; }
-            el[i].style = type + ':' + stagger + 'ms';
+            el[i].setAttribute('style', type + ':' + stagger + 'ms');
         }
 
     }
