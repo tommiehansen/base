@@ -3,8 +3,6 @@
     Stagger animations
     Simply add delays to any animation or transition
 
-    ! Stagger animation (C) 2016 Tommie Hansen. MIT license --> en.wikipedia.org/wiki/MIT_License
-
 */
 
 var stagger = {

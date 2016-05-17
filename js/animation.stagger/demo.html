@@ -5,71 +5,114 @@
     <title>Stagger animations</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="demo.css">
+    <style>.color { will-change: transform, opacity; } </style>
 </head>
 <body>
 
-    <div id="colors"><b>■</b><b>■</b><b>■</b></div>
-    <div id="boxes" class="container">
+<div id="left">
 
+    <div id="btns">
+        <p>Stagger presets</p>
+        <button class="btn-primary stag demo" data-stagger="30">30ms</button>
+        <button class="btn-primary stag demo" data-stagger="60">60ms (default)</button>
+        <button class="btn-primary stag" data-stagger="120">120ms</button>
+        <button class="btn-primary stag demo" data-stagger="60|5">60ms + stop after 5th</button>
+        <hr>
+        <p>Animation presets</p>
+        <button class="ani demo on" rel="1">Hangman (default)</button>
+        <button class="ani demoFirst" rel="2">High five</button>
+        <button class="ani demo" rel="3">Gummybeer</button>
+    </div>
+
+    <hr>
+
+    <form action="" id="f">
+        <p>Set custom values</p>
+        <input type="number" placeholder="Stagger in ms">
+        <input type="number" placeholder="Stop after X num">
+        <button type="submit" class="btn-primary s">Enter</button>
+    </form>
+
+</div><!-- / #left -->
+
+<div id="right">
+
+    <div id="boxes">
         <h1><b>Stagger</b> animations</h1>
         <p class="intro">A light 190 bytes pure javascript helper to add stagger to css animations or transitions. Run an automated <span id="demo">demo</span>, mash the buttons below or enter custom stuff in the form.</p>
-
-        <div id="btns">
-            <p>Presets</p>
-            <button class="btn-primary stag demo" data-stagger="30">30ms</button>
-            <button class="btn-primary stag demo" data-stagger="60">60ms (default)</button>
-            <button class="btn-primary stag demo" data-stagger="120">120ms</button>
-            <button class="btn-primary stag demo" data-stagger="60|5">60ms + stop after 5th</button>
-            <button class="ani on demo" rel="1" title="set anim style 1">1</button>
-            <button class="ani demo" rel="2" title="set anim style 2">2</button>
-            <button class="ani demo" rel="3" title="set anim style 3">3</button>
-        </div>
-
-        <form action="" id="f">
-            <p>Set custom</p>
-            <input type="number" placeholder="Stagger"><input type="number" placeholder="Stop after"><input type="submit" class="btn-secondary" value="Enter">
-        </form>
-
     </div>
 
-    <div class="container">
+    <hr>
 
-        <div id="boxColors">
-            <div class="color"><span style="background:#EF5350"></span><i><u>red</u><b>#EF5350</b></i></div>
-            <div class="color"><span style="background:#f06292"></span><i><u>pink</u><b>#f06292</b></i></div>
-            <div class="color"><span style="background:#BA68C8"></span><i><u>purple</u><b>#BA68C8</b></i></div>
-            <div class="color"><span style="background:#9575CD"></span><i><u>deep purple</u><b>#9575CD</b></i></div>
-            <div class="color"><span style="background:#5C6BC0"></span><i><u>indigo</u><b>#5C6BC0</b></i></div>
-            <div class="color"><span style="background:#42A5F5"></span><i><u>blue</u><b>#42A5F5</b></i></div>
-            <div class="color"><span style="background:#4FC3F7"></span><i><u>light blue</u><b>#4FC3F7</b></i></div>
-            <div class="color"><span style="background:#4DD0E1"></span><i><u>cyan</u><b>#4DD0E1</b></i></div>
-            <div class="color"><span style="background:#80CBC4"></span><i><u>teal</u><b>#80CBC4</b></i></div>
-            <div class="color"><span style="background:#81C784"></span><i><u>green</u><b>#81C784</b></i></div>
-            <div class="color"><span style="background:#9ccc65"></span><i><u>light green</u><b>#9ccc65</b></i></div>
-            <div class="color"><span style="background:#DCE775"></span><i><u>lime</u><b>#DCE775</b></i></div>
-            <div class="color"><span style="background:#FFEE58"></span><i><u>yellow</u><b>#FFEE58</b></i></div>
-            <div class="color"><span style="background:#FFD54F"></span><i><u>amber</u><b>#FFD54F</b></i></div>
-            <div class="color"><span style="background:#FFB74D"></span><i><u>orange</u><b>#FFB74D</b></i></div>
-            <div class="color"><span style="background:#FF8A65"></span><i><u>deep orange</u><b>#FF8A65</b></i></div>
-            <div class="color"><span style="background: #4cf"></span><i><u>baby douche</u><b>#44ccff</b></i></div>
-            <div class="color"><span style="background: #d00"></span><i><u>stabwound</u><b>#dd0000</b></i></div>
-            <div class="color"><span style="background: hotpink"></span><i><u>Bimbo</u><b>hotpink</b></i></div>
-            <div class="color"><span style="background: #f70"></span><i><u>Fire</u><b>#ff7700</b></i></div>
-        </div>
-
+    <div id="boxColors">
+        <div class="color"><span style="background:#EF5350"></span><i><u>red</u><b>#EF5350</b></i></div>
+        <div class="color"><span style="background:#f06292"></span><i><u>pink</u><b>#f06292</b></i></div>
+        <div class="color"><span style="background:#BA68C8"></span><i><u>purple</u><b>#BA68C8</b></i></div>
+        <div class="color"><span style="background:#9575CD"></span><i><u>deep purple</u><b>#9575CD</b></i></div>
+        <div class="color"><span style="background:#5C6BC0"></span><i><u>indigo</u><b>#5C6BC0</b></i></div>
+        <div class="color"><span style="background:#42A5F5"></span><i><u>blue</u><b>#42A5F5</b></i></div>
+        <div class="color"><span style="background:#4FC3F7"></span><i><u>light blue</u><b>#4FC3F7</b></i></div>
+        <div class="color"><span style="background:#4DD0E1"></span><i><u>cyan</u><b>#4DD0E1</b></i></div>
+        <div class="color"><span style="background:#80CBC4"></span><i><u>teal</u><b>#80CBC4</b></i></div>
+        <div class="color"><span style="background:#81C784"></span><i><u>green</u><b>#81C784</b></i></div>
+        <div class="color"><span style="background:#9ccc65"></span><i><u>light green</u><b>#9ccc65</b></i></div>
+        <div class="color"><span style="background:#DCE775"></span><i><u>lime</u><b>#DCE775</b></i></div>
+        <div class="color"><span style="background:#FFEE58"></span><i><u>yellow</u><b>#FFEE58</b></i></div>
+        <div class="color"><span style="background:#FFD54F"></span><i><u>amber</u><b>#FFD54F</b></i></div>
+        <div class="color"><span style="background:#FFB74D"></span><i><u>orange</u><b>#FFB74D</b></i></div>
+        <div class="color"><span style="background:#FF8A65"></span><i><u>deep orange</u><b>#FF8A65</b></i></div>
+        <div class="color"><span style="background: #4cf"></span><i><u>baby douche</u><b>#44ccff</b></i></div>
+        <div class="color"><span style="background: #d00"></span><i><u>stabwound</u><b>#dd0000</b></i></div>
+        <div class="color"><span style="background: hotpink"></span><i><u>Bimbo</u><b>hotpink</b></i></div>
+        <div class="color"><span style="background: #f70"></span><i><u>Fire</u><b>#ff7700</b></i></div>
     </div>
-    <!-- /#boxes -->
+
+    <hr>
+
+    <h2>Use</h2>
+    <ol>
+        <li>Create animation or transition</li>
+        <li>Get <a href="https://github.com/tommiehansen/base/tree/master/js/animation.stagger" target="_blank">Stagger Animation at Github</a></li>
+        <li>Include the helper in your page </li>
+        <li>call it ie <code>stagger.init(".color"); // use default options</code></li>
+        <li>Start your animation or transition with any method you desire</li>
+    </ol>
+
+    <p><b>Options</b></p>
+    <ol>
+        <li>Stagger in ms (milliseconds, 1000 = 1 second)<br><code>stagger.init(".myClass", <b>120</b>); // stagger 120ms</code></li>
+        <li>Stop after <em>n</em> elements<br><code>stagger.init(".myClass", 30, <b>4</b>); // stagger 30 ms + stop after 4</code></li>
+    </ol>
+</div><!-- / #right -->
 
 
 
-    <div class="container">
-
-        <h2>How</h2>
-        <p>Get <a href="#">Stagger Animations Github</a>, include animation.stagger.js or animation.stagger.min.js and do your stuff.</p>
 
 
-    </div>
-    <!-- /.container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <style id="keyframes"></style>
@@ -81,9 +124,8 @@
         var color = $('.color');
 
         // run at pageload
-        stagger.init(".color"); // use default options
+        stagger.init(".color"); // use default options (paint)
         color.addClass('animation'); // add animation
-
 
         // short func
         function removeAdd(s){ s.removeClass('animation'); setTimeout(function(){ s.addClass('animation'); }, 16); }
@@ -102,7 +144,6 @@
                 stagger.init('.color',delay);
             }
 
-            //color.removeClass('animation'); setTimeout(function(){ color.addClass('animation'); }, 16);
             removeAdd(color);
 
         })
@@ -175,9 +216,6 @@
                 stop = inputs[1],
                 str = '';
 
-            //if( delay.value !== '' ) { delay = delay.value; } else { delay = null; }
-            //if( stop.value !== '' ) { stop = stop.value; } else { stop = null; }
-
             delay.value !== '' ? delay = delay.value : delay = null;
             stop.value !== '' ? stop = stop.value : stop = null;
 
@@ -186,17 +224,23 @@
 
         })
 
-
         $('#demo').on('click', function(e){
             e.preventDefault();
             var $t = $(this);
             $t.addClass('green');
-            korklar.run('.demo','click', 2500, function(){
-                $t.removeClass('green');
+            $('.demoFirst').trigger('click');
+            $('.color:last').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+                $(this).unbind('webkitAnimationEnd oanimationend msAnimationEnd animationend');
+                korklar.run('.demo', 'click', 1700, function(){
+                    f.find('input:eq(0)').focus().val(500);
+                    setTimeout(function(){
+                        f.find('input:eq(1)').focus().val(2);
+                        setTimeout(function(){ f.find('button').focus().trigger('click'); $t.removeClass('green'); }, 500);
+                    }, 500);
+                });
             });
+
         })
-
-
     </script>
 
 </body>

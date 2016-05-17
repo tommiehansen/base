@@ -6,6 +6,7 @@
 
 .animation {
 	animation: in .5s forwards @ease-out-quart; opacity: 0;
+	animation-delay: 0.1s;
 	animation-duration: 0.5s;
 }
 
@@ -15,55 +16,129 @@
 }
 
 
- @media(max-width: 906px){
-	#btns p, #f p { display:block; width: 100%; }
- }
- @media(max-width: 470px){
-	#f input[type=submit]{ margin-left:0; margin-right:40px; }
- }
+
+
+
+
+
+
+/*-----------------------------------------------------
+
+	OTHER STUFF
+
+-----------------------------------------------------*/
+
+body {
+	display: table; table-layout: fixed;
+	max-width: 1120px;
+	margin:0 auto;
+}
+.row { display: table-row; }
+#left, #right { display: table-cell; vertical-align: top; }
+
+
+// mixers
+.primary-button(@color){
+	background-color: @color; border-color: @color;
+	width:100%;
+    color: #fff; backface-visibility: hidden;
+	font-weight: @font-light;
+	transition: transform .1s ease;
+	&:hover { background-color: darken(@color, 5%); border-color: darken(@color, 5%); color:#fff; }
+
+}
+
 
 
 body button.ani {
-	padding: 0 15px;
+	.primary-button(@cyan-300);
 	&.on { background: @indigo-400; border-color: @indigo-400; color: #fff; }
-}
-
-
-
-[title]{
-	position:relative;
-}
-[title]:after{
-	text-transform: none;
-	content:attr(title);
-	color: #666;
-	background: #fff;
-	padding: 0 @padding-half;
-	border:1px solid #ddd;
-	border-radius:3px;
-	position:absolute;
-	left:-9999px;
-	opacity:0;
-	margin:0 0 10px;
-	bottom:100%;
-	white-space:nowrap;
-	font-family: @font,arial;
-	font-weight: @font-normal;
-	font-size: 1.4rem;
-}
-[title]:hover:after{
-	left:0;
-	opacity:1;
 }
 
 #korklarMarker { margin:-6px 0 0 0px !important; }
 #demo {
-	&.green { .primary-button(@light-green-400); }
-	.primary-button(@indigo-400);
+	&.green { .primary-button(@light-green-400); animation: fadeInOut 1s ease infinite; }
+	.primary-button(@pink-300);
 	disply:inline-block;
-	padding:2px 5px;
+	padding:3px 6px;
 	border-radius:5px;
 	cursor: pointer;
+	font-weight: @font-normal;
+}
+@keyframes fadeInOut {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
 }
 
-a { text-decoration:none; font-weight: @font-normal; }
+a { color: @color-primary; text-decoration: none; border-bottom: 1px solid @color-primary; }
+
+
+/*-----------------------------------------------------
+
+	COLOR BOXES
+
+-----------------------------------------------------*/
+
+// boxes
+#boxColors { margin-top: @padding-base*3; }
+
+// buttons
+body .btn-primary, body .btn-secondary { font-weight: @font-normal; }
+body .btn-primary { .primary-button(@color-primary); }
+body .btn-s { .primary-button(@color-tertiary); }
+
+// color boxes
+.color {
+
+    display: inline-block;
+	width: 130px;
+    margin: 0 30px 30px 0;
+	background: #fff;
+    color: #666;
+	border-radius: 5px;
+	border-bottom:2px solid #ddd;
+	font-size: 1.2rem;
+	font-weight: 600;
+
+	span {
+		display: block;
+		position:relative;
+		height:60px; width: 100%;
+		border-radius:4px; border-bottom-left-radius:0; border-bottom-right-radius:0;
+	}
+
+    i {
+		padding: 9px 15px; display: inline-block; text-transform: uppercase;
+		u { text-decoration: none; }
+		b { display: block; font-weight: @font-normal; }
+    }
+
+} // .color
+
+
+
+
+// left / right
+#left, #right { padding: @padding-base*3 @padding-base*2; height: 100%; }
+#left {
+	max-width: 200px;
+}
+
+#right p {
+	font-weight: @font-normal;
+	font-size: 1.6rem;
+	&.intro { font-weight: @font-light; font-size: 2.1rem; margin-bottom: @padding-base*2; }
+}
+
+/*-----------------------------------------------------
+
+	FORM
+
+-----------------------------------------------------*/
+
+
+#f {
+	p { display:block;  }
+	input { width:100%; }
+ }
