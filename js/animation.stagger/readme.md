@@ -1,6 +1,8 @@
 ### Stagger animations
 A light 190 bytes pure javascript helper to add stagger to css animations or transitions.
 
+Demo: http://codepen.io/tommiehansen/full/ZWNRoY/
+
 -
 
 #### Use 
